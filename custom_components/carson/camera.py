@@ -64,7 +64,7 @@ class EagleEyeCamera(CarsonEntityMixin, Camera):
             "timezone": self._ee_camera.timezone,
         }
 
-    def camera_image(self):
+    def camera_image(self, width=None, height=None):
         """Return bytes of camera image."""
         _LOGGER.debug("Getting live camera image for %s", self.name)
         buffer = io.BytesIO()
