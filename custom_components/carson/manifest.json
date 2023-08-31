@@ -6,6 +6,7 @@
   "requirements": [
     "carson_living_library==0.0.1"
   ],
+  "version": "0.0.3",
   "ssdp": [],
   "zeroconf": [],
   "homekit": {},
