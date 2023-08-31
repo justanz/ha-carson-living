@@ -4,7 +4,7 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/carson",
   "requirements": [
-    "carson_living==0.0.5"
+    "carson_living_library==0.0.1"
   ],
   "ssdp": [],
   "zeroconf": [],
