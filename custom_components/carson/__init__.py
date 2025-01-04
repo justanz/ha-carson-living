@@ -85,21 +85,21 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         "ha_entities": {},
     }
 
-    for component in PLATFORMS:
-        await hass.config_entries.async_forward_entry_setup(entry, component)
+    # Forward entry setup for multiple platforms at once
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     if hass.services.has_service(DOMAIN, "update"):
         return True
 
     async def async_carson_api(_):
-        """Refresh all carson data."""
-        _LOGGER.debug("Updating all carson ")
+        """Refresh all Carson data."""
+        _LOGGER.debug("Updating all Carson data")
         for info in hass.data[DOMAIN].values():
             await hass.async_add_executor_job(info["api"].update)
             for ha_entity in info["ha_entities"].values():
                 ha_entity.schedule_update_ha_state()
 
-    # register service
+    # Register service
     hass.services.async_register(DOMAIN, "update", async_carson_api)
 
     return True
